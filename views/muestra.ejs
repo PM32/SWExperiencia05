@@ -1,0 +1,78 @@
+<div class="container">
+
+  <h1>Experiencia 05 - CRUD</h1>
+  <p class="lead">Interacción básica con Alumnos en base de datos (con validaciones).</p>
+
+  <div class="card card-info">
+  <h4 class="card-header">Lista de Alumnos</h3>
+  <div class="card-body">
+  	<button class="btn btn-info" data-toggle="modal" data-target="#myModal">Agregar</button>	
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Promedio</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+<% _.each(users, function(user) { %>
+			<tr>
+				<td><%= user.name %></td>
+				<td><%= user.lastname %></td>
+        <td><%= user.age %></td>
+				<td><%= user.prom %></td>
+				<td>
+        <a class="btn btn-primary" href="/edit/<%=user.id%>">Editar</a>
+				<a class="btn btn-danger" href="/delete/<%=user.id%>">Eliminar</a>
+				</td>
+			</tr>
+<% }) %>	
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Alumno</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/add">
+          <div class="form-group">
+            <label for="idName">Nombre</label>
+            <input name="name" type="text" class="form-control" id="idName" aria-describedby="nameHelp" placeholder="Ingresa su Nombre">
+            <small id="nameHelp" class="form-text text-muted">Nombre del Estudiante</small>
+          </div>
+          <div class="form-group">
+            <label for="idLastName">Apellido</label>
+            <input name="lastname" type="text" class="form-control" id="idLastName" aria-describedby="lastnameHelp" placeholder="Ingresa su Apellido">
+            <small id="lastnameHelp" class="form-text text-muted">Apellido del Estudiante</small>
+          </div>        
+          <div class="form-group">
+            <label for="idAge">Edad</label>
+            <input name="age" type="numeric" class="form-control" id="idAge" aria-describedby="ageHelp" placeholder="Ingresa su Edad">
+            <small id="ageHelp" class="form-text text-muted">Edad del Estudiante</small>
+          </div>             
+          <div class="form-group">
+            <label for="idAverage">Promedio Notas</label>
+            <input name="prom" type="text" class="form-control" id="idAverage" aria-describedby="averageHelp" placeholder="Ingresa su Promedio de Notas (entre 1.0 y 7.0)">
+            <small id="averageHelp" class="form-text text-muted">Promedio del Estudiante</small>
+          </div> 
+          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar e ignorar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>

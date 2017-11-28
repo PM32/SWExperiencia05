@@ -1,2 +1,3 @@
-# SWExperiencia05
-:@
+# ejemplo
+
+a [Sails](http://sailsjs.org) application
